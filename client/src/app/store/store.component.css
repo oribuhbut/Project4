@@ -1,0 +1,81 @@
+#sidebar {
+    width: 400px;
+    background: #1d1f25;
+    position: fixed !important;
+    height: 100% !important;
+    top: 0;
+    left: -400px;
+    transition: left 0.5s ease;
+    z-index: 9999;
+  }
+  
+  #sidebar.visible {
+    left: 0px;
+    transition: left 0.7s ease;
+  }
+  #sidebar-btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    margin: 20px;
+    position: absolute;
+    right: -60px;
+    top: 0px;
+  }
+  
+  #sidebar-btn span {
+    background-color: rgb(139, 139, 139);
+    height: 3px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  li {
+    list-style-type: none;
+}
+
+  .spinner-border{
+      position: fixed;
+      top:50%;
+      left:50%;
+      z-index: 9999;
+      height: 50px;
+      width: 50px;
+      font-size: 28px;
+      color: #1d1f25;
+  }
+  
+.cardClass{
+    animation-name: Card;
+    animation-duration: 1s;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    width: 18rem;
+    margin: 10px;
+    padding:5px;
+}
+
+@keyframes Card {
+    from { opacity: 0.2}
+    to { opacity: 1}
+}
+
+@media screen and (max-width: 800px) {
+    #sidebar {
+        width: 260px;
+        background: #1d1f25;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -260px;
+        transition: left 0.5s ease;
+        z-index: 9999;
+      }
+  }
+
+  .searchInp{
+    border-radius: 4px !important;
+    background-color: #1f1c1c;
+    border: 3px solid;
+  }

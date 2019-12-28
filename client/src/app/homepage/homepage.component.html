@@ -1,0 +1,90 @@
+<div class="jumbotron jumbotron-fluid text-center text-white">
+    <div class="container">
+        <h1 class="display-4">Software Solutions</h1>
+        <p class="lead" style="font-size:22px;">everything you need in one place</p>
+    </div>
+</div>
+<div class="container px-lg-5">
+    <div class="row">
+        <div class="col py-8 px-lg-8 border bg-light">
+            <div class="card text-center" *ngIf="CurrentUser != null" style="background-color: inherit; border: 2px solid lightgray;">
+                <div class="card-body">
+                    <h5 class="card-title">Hello {{CurrentUser.name}}</h5>
+                    <div *ngIf="cart != null">
+                        <p style="padding: 20px;" class="h6">you have open cart from {{cart.creation_date}}</p>
+                    </div>
+                    <div *ngIf="cart == null && userOrders.length > 0">
+                        <p style="padding: 20px;" class="h6">Your last Order Is From {{userOrders[userOrders.length-1].order_date}}</p>
+                    </div>
+                    <div *ngIf="cart == null && userOrders.length == 0">
+                        <p style="padding: 20px;" class="h6">Wellcome For Your First Time Here!</p>
+                    </div>
+                    <div class="btn btn-dark btn-sm" (click)="checkUserSession()">{{cart != null ? "Continue Shopping" : "Start Shopping"}}</div>
+                </div>
+            </div>
+            <div *ngIf="CurrentUser === null">
+            <div class="form-row justify-content-center">
+                <div class="col-md-8 mb-3">
+                    <label class="h4" for="emailLogin">Email</label>
+                    <input type="text" class="form-control bg-light" id="emailLogin" style="border:3px solid #d8dbe0"
+                        [(ngModel)]="email">
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label class="h4" for="passwordLogin">Password</label>
+                    <input type="text" class="form-control bg-light" id="passwordLogin" style="border:3px solid #d8dbe0"
+                        [(ngModel)]="password">
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col-md-8 mb-3">
+                    <button type="button" class="btn btn-primary btn-block" (click)="login()">Login</button>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col-md-6 mb-3">
+                    <button type="button" class="btn btn-dark btn-block" routerLink="/register">Register</button>
+                </div>
+            </div>
+        </div>
+            <div class="form-row justify-content-center">
+                <div class="alert alert-danger" *ngIf="showMessage">{{message}}</div>
+            </div>
+            <div *ngIf="showSpinner" class="form-row justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col py-8 px-lg-8 border bg-light about">
+            <img src="./../../assets/images/background-login-2.png" class="img-fluid"
+                alt="Responsive image">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item h6">Fast & Free Shipping<i class="fab fa-ups callout-icons"></i></li>
+                <li class="list-group-item h6">24/7 Customer Service<i class="fas fa-phone-square callout-icons"></i></li>
+                <li class="list-group-item h6">Live Chat With Representative<i class="far fa-comments callout-icons"></i></li>
+                <li class="list-group-item h6">Free 30 Days Return Item<i class="fas fa-box callout-icons"></i></li>
+                <li class="list-group-item h6">Guarentee For Quailty<i class="fas fa-tools callout-icons"></i></li>
+            </ul>
+        </div>
+        <div class="col py-8 px-lg-8 border bg-light">
+            <div class="col-sm-2">
+                <div class="c-callout c-callout-success">
+                    <small class="text-muted">Clients</small><br>
+                    <strong class="h4">{{clients}}</strong>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="c-callout c-callout">
+                    <small class="text-muted">Products</small><br>
+                    <strong class="h4">{{products}}</strong>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="c-callout c-callout-warning">
+                    <small class="text-muted">Orders</small><br>
+                    <strong class="h4">{{orders}}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

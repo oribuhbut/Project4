@@ -1,0 +1,26 @@
+body{
+  background-color: #e9ecef;
+}
+
+tr{
+    height: 50px;
+}
+
+pre{
+    height: 200px;
+    overflow-x:hidden;
+}
+::-webkit-scrollbar
+{
+  width: 6px;  /* for vertical scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}

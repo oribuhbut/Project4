@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+body, html{
+height: 100%;
+margin: 0px !important;
+}
+
+.btn {
+    border-radius: 0px !important;
+}
+
+.form-control{
+    border-radius: 0px !important;
+}
+.navbar{
+    margin-left: 60px;
+     background-color: rgb(14, 13, 13) !important;
+}
+
+.jumbotron {
+    background-color: rgb(14, 13, 13) !important;
+}

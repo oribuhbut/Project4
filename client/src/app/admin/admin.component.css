@@ -1,0 +1,88 @@
+#sidebar {
+    width: 400px;
+    background: #1d1f25;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: -400px;
+    transition: left 0.5s ease;
+    z-index: 9999;
+  }
+  
+  #sidebar.visible {
+    left: 0px;
+    transition: left 0.7s ease;
+  }
+  #sidebar-btn {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    margin: 20px;
+    position: absolute;
+    right: -60px;
+    top: 0px;
+  }
+  
+  #sidebar-btn span {
+    background-color:  rgb(139, 139, 139);
+    height: 3px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .spinner-border{
+      position: fixed;
+      top:50%;
+      left:50%;
+      z-index: 9999;
+      height: 50px;
+      width: 50px;
+      font-size: 28px;
+      color: #1d1f25;
+  }
+  
+.cardClass{
+    animation-name: Card;
+    animation-duration: 1s;
+}
+
+@keyframes Card {
+    from { opacity: 0.2}
+    to { opacity: 1}
+}
+
+@media screen and (max-width: 800px) {
+    #sidebar {
+        width: 260px;
+        background: #1d1f25;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -260px;
+        transition: left 0.5s ease;
+        z-index: 9999;
+      }
+  }
+
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .inputfile + label {
+    font-size: 1.25em;
+    font-weight: 400;
+    color: white;
+    background-color:#888888;
+    padding: 10px;
+    border-radius: 15px;
+    display: inline-block;
+    z-index: 20;
+    cursor: pointer;
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Api Document</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h1 class="display-4">Api Document</h1>
+            <p class="lead">document for using the rest api for my project</p>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <table class="table table-dark">
+                    <thead>
+                        <tr class="text-center">
+                            <th scope="col">Description</th>
+                            <th scope="col">Method/Path</th>
+                            <th scope="col">Request/Response</th>
+                        </tr>
+                                    <tbody>
+                                        <tr class="lead">
+                                                <td>Get Users</td>
+                                                <td>GET : http:localhost:3000/users/</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        empty 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Session</td>
+                                                <td>GET : http:localhost:3000/users/session</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        token 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Register</td>
+                                                <td>PUT : http:localhost:3000/users/</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        name,identity,password,city,street,email 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get User Identity</td>
+                                                <td>GET : http:localhost:3000/users/getId</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        id 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Login</td>
+                                                <td>POST : http:localhost:3000/users/login</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        email, password
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get Clients</td>
+                                                <td>GET : http:localhost:3000/users/clients</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        empty 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get Products</td>
+                                                <td>GET : http:localhost:3000/users/products</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        empty 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get Orders</td>
+                                                <td>GET : http:localhost:3000/users/orders</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        empty 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Add New Cart</td>
+                                                <td>PUT : http:localhost:3000/users/cart</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        user_id
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get User Orders</td>
+                                                <td>GET : http:localhost:3000/users/userorders</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        user_id
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Update Cart</td>
+                                                <td>POST : http:localhost:3000/users/updateCart</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        cart_id,product_id,quantity,price, cartProduct,_id
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Delete Product from Cart</td>
+                                                <td>DELETE : http:localhost:3000/users/cart/product</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        cardPrtId 
+                                                        }
+                                                    Response:{
+                                                        "success":boolean,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Place Order</td>
+                                                <td>PUT : http:localhost:3000/users/order</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        user_id,cart_id,total,city,street,shipping_date,credit_number 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Cart Status</td>
+                                                <td>GET : http:localhost:3000/store/cartstatus</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        id 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Product In Cart</td>
+                                                <td>GET : http:localhost:3000/store/opencart</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        id 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Get Categories</td>
+                                                <td>GET : http:localhost:3000/store/categories</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        empty 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Product From Categories</td>
+                                                <td>GET : http:localhost:3000/store/categoryProducts</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        id 
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":Array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Add Product</td>
+                                                <td>PUT : http:localhost:3000/store/product</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        name,category,price,photo
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Product Details</td>
+                                                <td>GET : http:localhost:3000/store/productDetails</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                       id
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":array
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                            <tr class="lead">
+                                                <td>Update Product</td>
+                                                <td>UPDATE : http:localhost:3000/store/product</td>
+                                                <td>
+                                                            <pre width="100" class="justify-content-start">
+                                                    <p class="lead" style="color: white;">
+                                                    Request:{
+                                                        id,name,category_id,price,photo
+                                                        }
+                                                    Response:{
+                                                        "success":success,
+                                                        "message":string,
+                                                        "data":null
+                                                        }
+                                                </p>
+                                                </pre>
+                                                </td>
+                                            </tr>
+                                    </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

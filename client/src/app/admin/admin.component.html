@@ -1,0 +1,125 @@
+<div *ngIf="showSpinner" class="form-row justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li (click)="getCategoryProducts('all')" style="cursor: pointer;" class="nav-item">
+                <a class="nav-link">All</a>
+            </li>
+            <div *ngFor="let category of Categories">
+                <li (click)="getCategoryProducts(category.id)" style="cursor: pointer;" class="nav-item">
+                    <a value="category.id" class="nav-link">{{category.name}}</a>
+                </li>
+            </div>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <i class="fa fa-search" style="font-size: 24px; padding: 10px;color:#ffffff;"></i>
+            <input class="form-control mr-sm-2" style="border-radius: 1px!important;" name="search" [(ngModel)]="search"
+                type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</nav>
+<div id="sidebar" class="text-white" style="padding: 40px;">
+    <div id="sidebar-btn" (click)="sidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div class="text-left lead">
+            Add Product
+        </div>
+        <div class="text-right">
+            <i class="fas fa-plus text-white" style="cursor: pointer; font-size:24px;"
+                (click)="displayProductAddingForm()"></i>
+        </div>
+    </div>
+    <hr style="border-color:white;">
+    <div class="form text-white" *ngIf="newProductOption">
+        <div class="form-group">
+            <label class="h5">Title</label>
+            <input type="text" class="form-control" [(ngModel)]="title">
+        </div>
+        <div class="form-group">
+            <label class="h5">Price</label>
+            <input type="text" class="form-control" [(ngModel)]="price">
+        </div>
+        <div class="form-group">
+            <label class="h5">Category</label>
+            <select class="form-control" [(ngModel)]="category">
+                <option value="0">Select category</option>
+                <option *ngFor="let category of Categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="float-left">
+                <input type="file" name="file" id="file" class="inputfile" (change)="addPhoto($event)" />
+                <label for="file">Select a photo</label>
+            </div>
+            <div class="float-right">
+                <div class="btn btn-primary btn-lg" (click)="addProduct()">Save</div>
+            </div>
+        </div>
+    </div>
+    <ul>
+    </ul>
+</div>
+<div class="row justify-content-center">
+    <div class="card col-md-2 cardClass" style="width: 18rem; margin: 10px;"
+        *ngFor="let product of Products | searchfilter : search">
+        <i class="far fa-edit" style="font-size: 26px; padding: 5px; cursor: pointer;" data-target="#exampleModalCenter"
+            data-toggle="modal" (click)="getProductDetails(product.id)"></i>
+        <img class="bd-placeholder-img card-img-top" src="{{product.photo}}" alt="">
+        <div class="card-body">
+            <strong class="card-text">{{product.price}} $</strong>
+            <h5 class="card-text">{{product.name}}</h5>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form" *ngIf="singlePrd !=null">
+                    <div class="form-group">
+                        <label class="h5">Title</label>
+                        <input type="text" class="form-control" [(ngModel)]="singlePrd[0].name">
+                    </div>
+                    <div class="form-group">
+                        <label class="h5">Price</label>
+                        <input type="text" class="form-control" [(ngModel)]="singlePrd[0].price">
+                    </div>
+                    <div class="form-group">
+                        <label class="h5">Category</label>
+                        <select class="form-control" [(ngModel)]="singlePrd[0].category_id">
+                            <option value="0">Select category</option>
+                            <option *ngFor="let category of Categories" value="{{category.id}}">{{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="file" id="file" class="inputfile" (change)="editPhoto($event)" />
+                        <label for="file">Select a photo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-dark btn-lg" (click)="editProduct()">Save</div>
+            </div>
+        </div>
+    </div>
+</div>

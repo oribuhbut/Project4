@@ -1,0 +1,161 @@
+<div *ngIf="showSpinner" class="form-row justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only"></span>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li (click)="getCategoryProducts('all')" style="cursor: pointer;" class="nav-item">
+                <a class="nav-link">All</a>
+            </li>
+            <div *ngFor="let category of Categories">
+                <li (click)="getCategoryProducts(category.id)" style="cursor: pointer;" class="nav-item">
+                    <a value="category.id" class="nav-link">{{category.name}}</a>
+                </li>
+            </div>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <i class="fa fa-search" style="font-size: 24px; padding: 10px;color:#ffffff;"></i>
+            <input class="form-control mr-sm-2" style="border-radius: 1px!important;" name="search" [(ngModel)]="search"
+                type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</nav>
+<div id="sidebar" class="text-white" style="padding: 30px;">
+    <div class="h3">My cart</div>
+    <hr style="border-color:white;">
+    <ul style="padding: 10px;">
+        <li *ngFor="let product of cartProducts">
+            <label class="h6">Product name : </label>
+            <strong> {{product.product_name}} </strong>
+            <br>
+            <label class="h6">Qty : </label>
+            <strong> {{product.quantity}} </strong>
+            <i class="fas fa-trash"
+                style="color: white; font-size: 20px; cursor: pointer; position: absolute; right: 30px;"
+                (click)="removePrtFromCrt(product.cartProduct_id)"></i>
+            <hr style="border-color:rgb(146, 146, 146)">
+        </li>
+    </ul>
+    <div id="sidebar-btn" (click)="sidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="sidebar-footer d-flex justify-content-between" *ngIf="cartProducts.length">
+        <div class="text-right lead">
+            Total: {{totalPrice}} <span>$</span>
+        </div>
+        <div class="text-left btn btn-dark btn-lg" data-target=".bd-example-modal-lg" data-toggle="modal"
+            (click)="fillOrderDtl()">
+            Order
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="card col-md-2 cardClass" data-toggle="modal" data-target=".smallModal"
+        *ngFor="let product of Products | searchfilter : search" (click)="setItemInModal(product.id, product.price)">
+        <img class="bd-placeholder-img card-img-top" style="height: 300px;" src="{{product.photo}}" alt="">
+        <hr>
+        <div class="card-body" style="max-height:100px; padding: 10px;">
+            <strong class="card-text">{{product.price}} $</strong>
+            <h5 class="card-text">{{product.name}}</h5>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-sm smallModal" tabindex="-1" role="dialog"
+        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content" style="padding: 5px;">
+                <div class="d-flex justify-content-between">
+                    <div class="text-left">
+                        <i class="fas fa-minus"
+                            style="font-size: 20px; margin-left: 30px; line-height: 56px; cursor: pointer;"
+                            (click)="reduceQuantity()"></i>
+                    </div>
+                    <div class="text-center lead" style="padding:5px;">
+                        Qty: <strong>{{selectedProductQty}}</strong>
+                    </div>
+                    <div class="text-right">
+                        <i class="fas fa-plus" style="font-size: 20px; line-height: 56px; cursor: pointer;"
+                            (click)="increaseQuantity()"></i>
+                    </div>
+                    <div class="btn btn-success btn-sm" data-dismiss="modal" (click)="saveProduct()"
+                        style="height: 40px; margin-top: 6px;">Save</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content text-white" style="padding: 10px; background-color: #10111f;">
+            <div class="row">
+                <div class="col-md-4" style="margin-left: 110px;">
+                <input class="form-control searchInp" name="searchInCart" placeholder="Search In Cart"
+                    (keyup)="updateSearchValue($event)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="h3">My cart</div>
+                    <hr style="border-color:white;">
+                    <ul style="padding: 15px;">
+                        <li *ngFor="let product of cartProducts">
+                            <label class="h6">Product name : </label>
+                            <strong [innerHTML]="product.product_name | highlight : searchInCart"> </strong>
+                            <label style="margin-left: 10px;" class="h6">Qty:</label>
+                            <strong> {{product.quantity}} </strong>
+                            <hr style="border-color:rgb(146, 146, 146)">
+                        </li>
+                    </ul>
+                    <div class="text-right lead" style="position: absolute; bottom: 10px;">
+                        Total: {{totalPrice}} <span>$</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h3">Payment | Order</div>
+                    <hr style="border-color:white;">
+                    <div class="form">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control" (dblclick)="dblClickTrigger($event)"
+                                [(ngModel)]="city">
+                        </div>
+                        <div class="form-group">
+                            <label>Street</label>
+                            <input type="text" name="street" class="form-control" (dblclick)="dblClickTrigger($event)"
+                                [(ngModel)]="street">
+                        </div>
+                        <div class="form-group">
+                            <label>Shipping Date</label>
+                            <input type="date" class="form-control" [(ngModel)]="shippingDate">
+                        </div>
+                        <div class="h5">Payment:</div>
+                        <hr style="border-color:white;">
+                        <div class="form-group">
+                            <label>Credit Card</label>
+                            <input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" [(ngModel)]="credit_card">
+                        </div>
+                        <div class="form-group">
+                            <div class="btn btn-dark btn-block" (click)="placeOrder()">Order</div>
+                        </div>
+                        <div class="form-group">
+                            <div *ngIf="!orderValid && orderValid != null" class="alert alert-danger">{{orderMessage}}
+                            </div>
+                            <div *ngIf="orderValid && orderValid != null" class="alert alert-success">Order Placed!
+                                click <span (click)="downloadOrderTxt()"
+                                    style="color: blue; cursor:pointer; font-size:20px;">here</span> to download it
+                                <span data-dismiss="modal" (click)="returnToHomePage()" style="cursor: pointer; font-weight: 600;">Return To Homepage</span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
